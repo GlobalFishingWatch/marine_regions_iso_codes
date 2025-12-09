@@ -22,7 +22,7 @@ count(iso, landlocked)
 #un code
 un <- readr::read_csv("Standard Naming and ISO - EN Naming.csv", n_max = 248)
 
-### all in tidycointries?
+### all in tidycountries?
 # how many names in the iso table are in the un table
 iso %>% mutate(in_un = name %in% un$Name) %>%
   mutate(special_case = name != SOVEREIGN1) %>%
@@ -40,6 +40,7 @@ un_comparison %>%
 filter(Name_un != name) %>%
   filter(Name_un != SOVEREIGN1) %>%
   select(Name_un, iso, MRGID, name_marine_regions = name) %>%
+  View()
   readr::write_csv("UN_major_differences.csv")
 
 #todo bien con los landlocked
